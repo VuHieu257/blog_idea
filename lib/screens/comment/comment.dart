@@ -1,5 +1,4 @@
 import 'package:blog_idea_app/models/b_idea.dart';
-import 'package:blog_idea_app/service/auth_service.dart';
 import 'package:blog_idea_app/service/database/database_comment_service.dart';
 import 'package:blog_idea_app/service/database/database_user_service.dart';
 import 'package:blog_idea_app/service/get_x/get_x.dart';
@@ -12,6 +11,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:flutter/foundation.dart' as foundation;
 import 'package:get/get.dart';
+
+import '../../service/auth_service.dart';
 
 class PostCommentScreen extends StatefulWidget {
   final PanelController panelController;
@@ -58,7 +59,6 @@ class _PostCommentScreenState extends State<PostCommentScreen> {
   bool statusData = true;
   @override
   Widget build(BuildContext context) {
-    print(widget.id);
     // print(statusData);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -68,7 +68,7 @@ class _PostCommentScreenState extends State<PostCommentScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 TextButton(
                   onPressed: () {
@@ -83,6 +83,13 @@ class _PostCommentScreenState extends State<PostCommentScreen> {
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
                 ),
+              const  Spacer(),
+                const Text(
+                  'Comment',
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                const Spacer(),
               ],
             ),
           ),

@@ -1,7 +1,5 @@
 import 'package:blog_idea_app/models/b_idea.dart';
 import 'package:blog_idea_app/screens/home/home/home.dart';
-import 'package:blog_idea_app/screens/view/view_create.dart';
-import 'package:blog_idea_app/service/auth_service.dart';
 import 'package:blog_idea_app/service/database/database_user_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+import '../../service/auth_service.dart';
 import '../../service/get_x/get_x.dart';
 
 

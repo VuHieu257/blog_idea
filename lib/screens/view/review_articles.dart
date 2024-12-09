@@ -38,6 +38,7 @@ class _ReviewArticlesState extends State<ReviewArticles> {
         child: const Icon(Icons.arrow_back),
       ),
       title: const Text("Review Articles",style: TextStyle(fontWeight: FontWeight.bold),),
+      backgroundColor: Colors.white,
     );
   }
   Widget _trending() {

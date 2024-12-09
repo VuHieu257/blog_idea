@@ -10,9 +10,10 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../service/auth_service.dart';
 import '../../service/get_x/get_x.dart';
+import '../../style/style.dart';
 class AccountPage extends StatefulWidget {
-  String id;
-  AccountPage({super.key,required this.id});
+  // String id;
+  const AccountPage({super.key});
 
   @override
   State<AccountPage> createState() => _AccountPageState();
@@ -54,20 +55,23 @@ class _AccountPageState extends State<AccountPage> {
   bool statusEdit=false;
   @override
   Widget build(BuildContext context) {
-    print(userDataController.role);
     return GestureDetector(
       onTap: ()=>AuthService().hideKeyBoard(),
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Styles.nearlyWhite,
+          title:const Row(
+            children: [
+              CircleAvatar(radius: 30,backgroundImage: AssetImage("assets/images/logo.jpeg"),),
+              Text("IDea",style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),)
+            ],
+          ),
+        ),
         body: SingleChildScrollView(
           child: statusEditProfile?
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(left:8.0,top: 8),
-                child: Text("My Profile",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22,color: Colors.black),),
-              ),
-              Divider(thickness: 3,color: Colors.grey.shade400,),
               SizedBox(
                 height:context.height*0.2,
                 width:context.width*0.4,

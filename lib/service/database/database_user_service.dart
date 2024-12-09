@@ -1,5 +1,6 @@
 import 'package:blog_idea_app/models/b_idea.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 
 
 const String USER_COLLECTION_REF="db_user";
@@ -38,12 +39,16 @@ class DatabaseUserService{
       print('Error updating todo: $error'); // Log the error for debugging
     }
   }
-  Future<void> addUserData(UserData userdata) async {
+  Future<void> addUserData(UserData userdata,String id) async {
     try {
-      await _userdatasRef.add(userdata);
-      print('UserData added successfully!'); // Informative success message
+      await _userdatasRef.doc(id).set(userdata);
+      if (kDebugMode) {
+        print('UserData added successfully!');
+      } // Informative success message
     } catch (error) {
-      print('Error adding userdata: $error'); // Log the error for debugging
+      if (kDebugMode) {
+        print('Error adding userdata: $error');
+      } // Log the error for debugging
     }
   }
 

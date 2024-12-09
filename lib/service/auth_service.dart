@@ -3,22 +3,36 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+
+import '../models/b_idea.dart';
+import 'database/database_user_service.dart';
 class AuthService {
   Future<String?> registration({
     required String email,
+    required String userName,
     required String password,
   }) async {
     try {
-      final methods = await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
+      final DatabaseUserService _databaseService=DatabaseUserService();
+
+      final methods =
+      await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
       if (methods.isNotEmpty) {
         // Email đã được sử dụng cho việc đăng ký
         return 'The account already exists for that email.';
       } else {
         // Email chưa được sử dụng, tiến hành tạo tài khoản mới
+        UserCredential userCredential =
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
+        UserData user = UserData(
+            displayName: userName,
+            email: email,
+            password: password,
+            role: "blogger", img: '');
+        _databaseService.addUserData(user, userCredential.user?.uid ?? "");
         return 'Success';
       }
     } on FirebaseAuthException catch (e) {

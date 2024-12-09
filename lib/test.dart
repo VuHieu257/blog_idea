@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:blog_idea_app/screens/account/my_account.dart';
 import 'package:blog_idea_app/screens/home/home/home.dart';
 import 'package:blog_idea_app/screens/home/trending/trending.dart';
-import 'package:blog_idea_app/service/auth_service.dart';
 import 'package:blog_idea_app/service/get_x/get_x.dart';
 import 'package:blog_idea_app/style/style.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +40,7 @@ class _UploadImageState extends State<UploadImage> {
           children: [
             const HomeScreen(),
             const TrendingScreen(),
-            AccountPage(id:"${userDataController.id}"),
+            AccountPage(),
           ],
         ),
       ),

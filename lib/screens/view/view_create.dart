@@ -1,7 +1,6 @@
 import 'package:blog_idea_app/models/b_idea.dart';
 import 'package:blog_idea_app/screens/home/home/home.dart';
 import 'package:blog_idea_app/screens/layout/bottom/bottom_navigation_bar.dart';
-import 'package:blog_idea_app/service/auth_service.dart';
 import 'package:blog_idea_app/service/database/database_service.dart';
 import 'package:blog_idea_app/service/get_x/get_x.dart';
 import 'package:blog_idea_app/style/style.dart';
@@ -13,6 +12,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+
+import '../../service/auth_service.dart';
 
 class ViewCreateBlogIdea extends StatefulWidget {
   String idUser;
@@ -132,6 +133,7 @@ class _ViewCreateBlogIdeaState extends State<ViewCreateBlogIdea> {
           onTap: () => Get.offAll(const BottomNavigationBarWidget()),
           child: const Icon(Icons.arrow_back),
         ),
+        backgroundColor: Colors.white,
         title: const Center(child: Text("New Posts",style: TextStyle(fontWeight: FontWeight.bold))),
         actions: [
           InkWell(
@@ -357,12 +359,12 @@ class _ViewCreateBlogIdeaState extends State<ViewCreateBlogIdea> {
                                       (foundation.defaultTargetPlatform == TargetPlatform.android
                                           ?  1.00
                                           :  1.0),
-                                  backgroundColor: Styles.scaffoldBackgroundColor,
+                                  backgroundColor: Colors.white,
                                 ),
                                 swapCategoryAndBottomBar:  true,
                                 skinToneConfig: const SkinToneConfig(),
-                                categoryViewConfig: CategoryViewConfig(
-                                  backgroundColor: Styles.scaffoldBackgroundColor,
+                                categoryViewConfig: const CategoryViewConfig(
+                                  backgroundColor:  Colors.white,
                                   showBackspaceButton: true,
                                 ),
                                 bottomActionBarConfig: const BottomActionBarConfig(enabled: false,),

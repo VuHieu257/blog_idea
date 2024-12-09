@@ -62,7 +62,7 @@ class _RegisterAcountState extends State<SignUpScreen> {
                           alignment: Alignment.center,
                           decoration: const BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage("assets/images/creative hub.png"),
+                                  image: AssetImage("assets/images/Designer.jpeg"),
                                   fit: BoxFit.fill
                               )
                           ),
@@ -200,7 +200,9 @@ class _RegisterAcountState extends State<SignUpScreen> {
                                   InkWell(
                                     splashColor: Colors.transparent,
                                     onTap: () async {
-                                      final message = await AuthService().registration(
+                                      final message =
+                                      await AuthService().registration(
+                                        userName: _userNameController.text,
                                         email: _userEmailController.text,
                                         password: _userPasswordController.text,
                                       );
@@ -208,25 +210,22 @@ class _RegisterAcountState extends State<SignUpScreen> {
                                         validPassword = message!;
                                         validEmail = message;
                                       });
-                                      if(_formKey.currentState!.validate()){
-                                        if (message!.contains("The account already exists for that email.") ||
-                                            message.contains("The password provided is too weak.")) {
-                                          ScaffoldMessenger.of(context).showSnackBar(
+                                      if (_formKey.currentState!.validate()) {
+                                        if (message!.contains(
+                                            "The account already exists for that email.") ||
+                                            message.contains(
+                                                "The password provided is too weak.")) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
                                             SnackBar(
                                               content: Text(message),
                                             ),
                                           );
                                         } else if (message.contains('Success')) {
                                           Navigator.of(context).pushReplacement(
-                                              MaterialPageRoute(builder: (context) => const SignInScreen()));
-                                          UserData user = UserData(
-                                            img: '',
-                                            displayName: _userNameController.text,
-                                            email: _userEmailController.text,
-                                            password: _userPasswordController.text,
-                                            role: "blogger",
-                                          );
-                                          _databaseService.addUserData(user);
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                  const SignInScreen()));
                                         }
                                       }
                                     },

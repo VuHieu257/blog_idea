@@ -1,12 +1,12 @@
 import 'package:blog_idea_app/screens/layout/bottom/bottom_navigation_bar.dart';
 import 'package:blog_idea_app/screens/login/sign_up.dart';
-import 'package:blog_idea_app/service/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
+import '../../service/auth_service.dart';
 import '../../service/get_x/get_x.dart';
 
 
@@ -47,7 +47,8 @@ class _SignInScreenState extends State<SignInScreen> {
                           alignment: Alignment.center,
                           decoration: const BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage("assets/images/creative hub.png"),
+                                  image: AssetImage("assets/images/Designer.jpeg"),
+
                                   fit: BoxFit.fill
                               )
                           ),
